@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <!--Using type based constructor injection-->
+  <bean id="employee" class="app.Employee">
+    <constructor-arg type="String" index="0" value="John"/>
+    <constructor-arg type="Integer" index="1" value="35"/>
+    <constructor-arg type="String" index="2" value="Computer Science"/>
+  </bean>
+<!--Using indexed based constructor injection-->
+  <bean id="employeeIndexed" class="app.Employee">
+    <constructor-arg index="0" value="Peter"/>
+    <constructor-arg index="1" value="38"/>
+    <constructor-arg index="2" value="Finance"/>
+  </bean>
+
+
+  <bean id="employeeSetter" class="app.Employee">
+    <property name="name" value="Smith"/>
+    <property name="age" value="48"/>
+    <property name="department" value="Engineering"/>
+  </bean>
+
+  <bean id="company" class="app.Company">
+    <constructor-arg ref="employee"/>
+  </bean>
+  <bean id="companyConstructor" class="app.Company">
+    <property name="employee" ref="employee"/>
+  </bean>
+
+</beans>
